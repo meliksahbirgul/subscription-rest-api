@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\RegisterRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -55,6 +56,23 @@ class UserController extends Controller
                 'email' => $user->email,
                 'id' => $user->id
             ]
+        ]);
+    }
+
+    public function me(Request $request, User $user)
+    {
+        $user = $request->user();
+
+        $user->load('subscriptions', 'transactions');
+
+        return response()->json([
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'subscriptions' => $user->subscriptions,
+                'transactions' => $user->transactions,
+            ],
         ]);
     }
 
