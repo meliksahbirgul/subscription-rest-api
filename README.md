@@ -23,6 +23,10 @@ do these steps after cloning:
 > php artisan serve
 ```
 
+### Application Postman Documentation
+
+You can access Postman API Documentation here: https://www.postman.com/melsah/workspace/subscription-rest-api-documentation/api/ca40f5d7-1d45-4330-aebb-ba4a6c3adc7c?version=bb6dfc13-ee05-4660-b760-5acbdc787f91
+
 # License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
