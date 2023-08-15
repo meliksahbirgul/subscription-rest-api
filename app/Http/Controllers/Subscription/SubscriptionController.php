@@ -38,6 +38,8 @@ class SubscriptionController extends Controller
 
     public function updateSubscription(UpdateSubscriptionRequest $request, User $user, Subscription $subscription)
     {
+        $this->authorize('update', $subscription);
+
         $subscription = $this->subscriptionService->updateSubscription($request, $subscription);
 
         return response()->json([
@@ -52,6 +54,8 @@ class SubscriptionController extends Controller
 
     public function deleteSubscription(User $user, Subscription $subscription)
     {
+        $this->authorize('delete', $subscription);
+
         $this->subscriptionService->deleteSubscription($subscription);
 
         return response()->noContent();
