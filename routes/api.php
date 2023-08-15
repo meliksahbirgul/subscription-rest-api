@@ -18,10 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [UserController::class,'login']);
 Route::post('/register', [UserController::class,'register']);
 
-Route::group(['middleware' => ['auth:sanctum']], function ($route) {
-    $route->post('/user/{user}/subscription', [SubscriptionController::class,'storeSubscription']);
-    $route->put('/user/{user}/subscription/{subscription}', [SubscriptionController::class,'updateSubscription']);
-    $route->delete('/user/{user}/subscription/{subscription}', [SubscriptionController::class,'deleteSubscription']);
-    $route->post('/user/{user}/transaction', [TransactionsController::class,'transaction']);
-    $route->get('user/{user}', [UserController::class,'me']);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::post('/{user}/subscription', [SubscriptionController::class,'storeSubscription']);
+        Route::put('/{user}/subscription/{subscription}', [SubscriptionController::class,'updateSubscription']);
+        Route::delete('/{user}/subscription/{subscription}', [SubscriptionController::class,'deleteSubscription']);
+        Route::post('/{user}/transaction', [TransactionsController::class,'transaction']);
+        Route::get('/{user}', [UserController::class,'me']);
+    });
 });
