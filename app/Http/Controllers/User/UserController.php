@@ -23,6 +23,12 @@ class UserController extends Controller
             $user = Auth::user();
             return response()->json([
                 'authorization' => [
+                    'user' =>
+                    [
+                        'id' => $user->id,
+                        'name' => $user->name,
+                        'email' => $user->email,
+                    ],
                     'token' => $user->createToken('ApiToken')->plainTextToken,
                 ]
             ]);

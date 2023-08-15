@@ -3,6 +3,7 @@
 namespace Tests\Feature\User;
 
 use Tests\TestCase;
+use Illuminate\Support\Str;
 
 class RegistrationTest extends TestCase
 {
@@ -12,8 +13,8 @@ class RegistrationTest extends TestCase
     public function test_new_users_can_register(): void
     {
         $userData = [
-            "name" => "Unit Test User",
-            "email" => "unittestuser@email.com",
+            "name" => Str::random(10),
+            "email" => Str::random(10)."@email.com",
             "password" => "password",
         ];
 
