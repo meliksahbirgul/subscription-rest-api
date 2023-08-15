@@ -30,7 +30,6 @@ class CheckSubscriptions extends Command
      */
     public function handle()
     {
-        \Log::info('now: ' .Carbon::now());
         $subscriptions = Subscription::where('expired_at', '<=', Carbon::now())->get();
 
         foreach($subscriptions as $subscription) {
