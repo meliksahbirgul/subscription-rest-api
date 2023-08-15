@@ -38,7 +38,16 @@ class TransactionService
             abort(400, 'Transaction Create Failed');
         }
 
+        $this->updateSubscriptionRenewAndExpireDate($subscription);
+
         return $transaction;
+    }
+
+    private function updateSubscriptionRenewAndExpireDate(Subscription $subscription)
+    {
+        $subscription->renewed_at = Carbon::now();
+        $subscription->expired_at = Carbon::now()->addMonth();
+        $subscription->save();
     }
 
 }
