@@ -3,7 +3,6 @@
 use App\Http\Controllers\Subscription\SubscriptionController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\User\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*

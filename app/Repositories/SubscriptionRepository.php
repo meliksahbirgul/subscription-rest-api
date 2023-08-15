@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Currency;
 use App\Models\Subscription;
 
 class SubscriptionRepository
