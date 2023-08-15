@@ -6,22 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Subscription extends Model
+class Transactions extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     protected $fillable = [
-        'name',
-        'price',
+        'subscription_id',
         'user_id',
-        'renewed_at',
-        'expired_at',
-    ];
-
-    protected $dates = [
-        'renewed_at',
-        'expired_at',
+        'price',
     ];
 
     public function user()
@@ -29,9 +22,9 @@ class Subscription extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function transactions()
+    public function subscription()
     {
-        return $this->hasMany(Transactions::class);
+        return $this->belongsTo(Subscription::class);
     }
 
 }
