@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Transaction;
 
 use App\Http\Requests\Transaction\TransactionRequest;
 use App\Models\User;
 use App\Services\TransactionService;
+use App\Http\Controllers\Controller;
 
 class TransactionsController extends Controller
 {
