@@ -1,4 +1,4 @@
-# League Simulation
+# Subscription and Transaction REST API
 
 Laravel application that subscription and transaction
 
